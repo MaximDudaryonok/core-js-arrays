@@ -485,8 +485,8 @@ function getHexRGBValues(arr) {
  *   getMaxItems([ 10, 2, 7, 5, 3, -5 ], 3) => [ 10, 7, 5 ]
  *   getMaxItems([ 10, 10, 10, 10 ], 3) => [ 10, 10, 10 ]
  */
-function getMaxItems(/* arr, n */) {
-  throw new Error('Not implemented');
+function getMaxItems(arr, n) {
+  return arr.length ? arr.sort((a, b) => b - a).slice(0, n) : [];
 }
 
 /**
@@ -501,23 +501,41 @@ function getMaxItems(/* arr, n */) {
  *    findCommonElements(['a', 'b', 'c'], ['b', 'c', 'd']) => [ 'b', 'c' ]
  *    findCommonElements([1, 2, 3], ['a', 'b', 'c']) => []
  */
-function findCommonElements(/* arr1, arr2 */) {
-  throw new Error('Not implemented');
+function findCommonElements(arr1, arr2) {
+  return arr1.filter((item) => arr2.includes(item));
+  // return arr1.reduce((acc, item) => {
+  //   if (arr2.includes(item)) {
+  //     acc.push(item);
+  //   }
+  //   return acc;
+  // }, []);
 }
 
 /**
- * Finds the length of the longest increasing and uninterrupted subsequence of a given array of integers.
+ * Finds the length of the longest increasing subsequence of a given array of integers.
  *
  * @param {array} nums - The array of integers.
  * @return {number} - The length of the longest increasing subsequence.
  *
  * @example
- *    findLongestIncreasingSubsequence([10, 22, 9, 33, 21, 50, 41, 60, 80]) => longest is [41, 60, 80] => 3
- *    findLongestIncreasingSubsequence([3, 10, 2, 1, 20]) => longest is [3, 10] and [1, 20] => 2
- *    findLongestIncreasingSubsequence([50, 3, 10, 7, 40, 80]) => longest is [7, 40, 80] => 3
+ *    findLongestIncreasingSubsequence([10, 22, 9, 33, 21, 50, 41, 60, 80]) => 3
+ *    findLongestIncreasingSubsequence([3, 10, 2, 1, 20]) => 2
+ *    findLongestIncreasingSubsequence([50, 3, 10, 7, 40, 80]) => 3
  */
-function findLongestIncreasingSubsequence(/* nums */) {
-  throw new Error('Not implemented');
+function findLongestIncreasingSubsequence(nums) {
+  const result = [];
+  let counter = 0;
+  nums.reduce((acc, item, index) => {
+    if (acc < item) {
+      counter += 1;
+    }
+    if (acc > item || index === nums.length - 1) {
+      result.push(counter);
+      counter = 1;
+    }
+    return item;
+  }, 0);
+  return result.sort((a, b) => a - b)[result.length - 1];
 }
 
 /**
@@ -534,8 +552,8 @@ function findLongestIncreasingSubsequence(/* nums */) {
  *  propagateItemsByPositionIndex([ 'a', 'b', 'c', null ]) => [ 'a', 'b', 'b', 'c', 'c', 'c',  null, null, null, null ]
  *  propagateItemsByPositionIndex([ 1,2,3,4,5 ]) => [ 1, 2, 2, 3, 3, 3, 4, 4, 4, 4, 5, 5, 5, 5, 5 ]
  */
-function propagateItemsByPositionIndex(/* arr */) {
-  throw new Error('Not implemented');
+function propagateItemsByPositionIndex(arr) {
+  return arr.map((item, index) => [...Array(index + 1)].fill(item)).flat();
 }
 
 /**
