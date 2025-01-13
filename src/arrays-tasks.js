@@ -88,7 +88,6 @@ function findAllOccurrences(arr, item) {
   return arr.filter((elem) => elem === item).length;
 }
 
-
 /**
  * Removes falsy values from the specified array.
  * Falsy values: false, null, 0, "", undefined, and NaN.
@@ -331,14 +330,12 @@ function selectMany(arr, childrenSelector) {
 function calculateBalance(arr) {
   return arr.length
     ? arr
-      .map((item) =>
-        item.reduce((accumulator, current) => accumulator - current)
-      )
-      .reduce((acc, curr) => acc + curr, 0)
+        .map((item) =>
+          item.reduce((accumulator, current) => accumulator - current)
+        )
+        .reduce((acc, curr) => acc + curr, 0)
     : 0;
 }
-
-
 /**
  * Breaks an array into chunks of the specified size.
  *
@@ -627,10 +624,10 @@ function swapHeadAndTail(arr) {
   return arr.length % 2 === 0
     ? [...arr.slice(arr.length / 2), ...arr.slice(0, arr.length / 2)]
     : [
-      ...arr.slice(Math.ceil(arr.length / 2)),
-      ...arr.slice(Math.floor(arr.length / 2), Math.ceil(arr.length / 2)),
-      ...arr.slice(0, arr.length / 2),
-    ];
+        ...arr.slice(Math.ceil(arr.length / 2)),
+        ...arr.slice(Math.floor(arr.length / 2), Math.ceil(arr.length / 2)),
+        ...arr.slice(0, arr.length / 2),
+      ];
 }
 
 module.exports = {
