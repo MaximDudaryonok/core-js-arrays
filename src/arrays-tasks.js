@@ -195,8 +195,6 @@ function insertItem(arr, item, index) {
  */
 function getHead(arr, n) {
   return arr.slice(0, n);
-  // arr.splice(n);
-  // return arr;
 }
 
 /**
@@ -311,7 +309,6 @@ function flattenArray(nestedArray) {
  */
 function selectMany(arr, childrenSelector) {
   return arr.map(childrenSelector).flat(1);
-  // return arr.flatMap(childrenSelector);
 }
 
 /**
@@ -400,7 +397,6 @@ function getElementByIndices(arr, indices) {
  *  getFalsyValuesCount([ null, undefined, NaN, false, 0, '' ]) => 6
  */
 function getFalsyValuesCount(arr) {
-  // return arr.filter((item) => Boolean(item) === false).length;
   return arr.reduce(
     (acc, item) => (Boolean(item) === false ? acc + 1 : acc + 0),
     0
@@ -426,10 +422,9 @@ function getFalsyValuesCount(arr) {
  *                              [0,0,0,0,1]]
  */
 function getIdentityMatrix(n) {
-  const matrix = new Array(n)
+  return new Array(n)
     .fill(new Array(n).fill(n))
     .map((item, index) => item.map((_, ind) => (ind === index ? 1 : 0)));
-  return matrix;
 }
 
 /**
@@ -500,12 +495,6 @@ function getMaxItems(arr, n) {
  */
 function findCommonElements(arr1, arr2) {
   return arr1.filter((item) => arr2.includes(item));
-  // return arr1.reduce((acc, item) => {
-  //   if (arr2.includes(item)) {
-  //     acc.push(item);
-  //   }
-  //   return acc;
-  // }, []);
 }
 
 /**
